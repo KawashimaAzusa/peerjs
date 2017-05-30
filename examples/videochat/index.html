@@ -1,7 +1,16 @@
 <html>
-<head>
+<head lang="ja">
+  <meta charset="utf-8">
   <title>PeerJS - Video chat example</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/audio.css">
+  <script src="audiojs/audio.min.js"></script>
+  <script>
+  audiojs.events.ready(function() {
+  var as = audiojs.createAll();
+  });
+  </script>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   <script type="text/javascript" src="https://skyway.io/dist/0.3/peer.js"></script>
   <script>
@@ -93,7 +102,9 @@
 </head>
 
 <body>
-
+  <div id="btn">MUSIC</div>
+  <script src="js/main.js"></script>
+  <audio src="audiojs/Bosanoba.mp3" preload="auto"></audio>
   <div class="pure-g">
 
       <!-- Video area -->
