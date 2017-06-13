@@ -107,6 +107,27 @@
   <audio src="audiojs/Bosanoba.mp3" preload="auto"></audio>
   <div class="pure-g">
 
+  <button onclick="Play()" id="playsound" disabled>WebAudioVer</button>
+  <script type="text/javascript">
+  var audioctx = new AudioContext();
+  var buffer = null;
+  const Play = () => {
+    var src = audioctx.createBufferSource();
+    src.buffer = buffer;
+    src.connect(audioctx.destination);
+    src.start(0);
+  }
+  const LoadSample = (ctx, url) => {
+    fetch(url).then( response => {
+      return response.arrayBuffer();
+    }).then( arrayBuffer => {
+      ctx.decodeAudioData(arrayBuffer, (b) => {buffer=b;}, () => {});
+      document.querySelector("button#playsound").removeAttribute("disabled");
+    });
+  }
+  LoadSample(audioctx, "audiojs/Bosanoba.mp3");
+  </script>
+
       <!-- Video area -->
       <div class="pure-u-2-3" id="video-container">
         <video id="their-video" autoplay></video>
